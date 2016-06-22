@@ -3,10 +3,14 @@ var router = express.Router();
 var fs = require("fs");
 var multer = require('multer');
 var uploads = multer({dest: './uploads'});
+var qcloud = require('qcloud_cos');
+
+var expired = parseInt(Date.now() / 1000) + qcloud.conf.EXPIRED_SECONDS;
+var sign  = qcloud.auth.signMore('duoduo', expired);
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: sign });
 });
 
 router.get('/upload', function(req, res, next) {

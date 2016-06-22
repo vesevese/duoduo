@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>Upload</title>
-</head>
-<body>
-<h3>Upload a file</h3>
-Select a file to upload <br />
-<form action="/file_upload" method="post" enctype="multipart/form-data">
-<input type="file" name="image" size="50" />
-<br />
-<input type="submit" value="Upload" />
-</form>
-</body>
+	<head>
+		<title>Upload</title>
+	    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	    <link rel='stylesheet' href='/stylesheets/style.css' />
+	</head>
+	<body>
+		<h3>Upload a file</h3>
+		Select a file to upload <br />
+		<form action="/file_upload" method="post" enctype="multipart/form-data">
+			<input type="file" name="image" size="50" />
+			<br />
+			<input type="submit" value="Upload" />
+		</form>
+	<script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	</body>
 </html>
