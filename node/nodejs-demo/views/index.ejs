@@ -9,10 +9,31 @@
     <div class="well jumbotron">
       <h1>Sign</h1>
       <p class="sampleId" style="word-wrap: break-word"><%= title %></p>
+      <p class="sampleUrl" style="word-wrap: break-word"></p>
       <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
     </div>
     <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
     <script src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-    <script src="../script/getQcloud.js"></script>
+    <script>
+      $(document).ready(function() {
+        $('.sampleUrl').append($('.sampleId').text());
+        $.ajax({
+          type: "GET",
+          url: "http://web.file.myqcloud.com/files/v1/10047315/duoduo/sample.jpg?op=stat",
+          beforeSend: function(xhr){xhr.setRequestHeader('Authorization', $('.sampleId').text());},
+          contentType: 'application/json;charset=utf-8',
+          async: false,
+          success: function (data) {
+            $('.sampleUrl').append(data.access_url);
+          },
+          error: function (XMLHttpRequest, textStatus, errorThrown) {
+            $('.sampleUrl').append(textStatus + errorThrown);
+          },
+          complete: function () {
+            $('.sampleUrl').append('finished');
+          }       
+        });
+      });
+    </script>
   </body>
 </html>
